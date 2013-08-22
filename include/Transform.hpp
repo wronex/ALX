@@ -156,7 +156,7 @@ public:
         returns the current transform.
         @return the current transform.
      */
-    static Transform *getCurrent() {
+    static Transform *current() {
         return _currentTransform();
     }
 

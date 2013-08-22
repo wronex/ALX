@@ -22,12 +22,12 @@ public:
 
     //draws the bitmap
     void draw() const {
-        bitmap.draw(position.getX(), position.getY());
+        bitmap.draw(position.x(), position.y());
     }
 
     //get rect
-    Rect<int> getRect() const {
-        return Rect<int>(position, bitmap.getSize());
+    Rect<int> rect() const {
+        return Rect<int>(position, bitmap.size());
     }
 };
 
@@ -42,26 +42,26 @@ size_t rnd(size_t n) {
 
 //check collision between two sprites
 bool collision(const Sprite &a, const Sprite &b) {
-    return a.getRect().intersects(b.getRect());
+    return a.rect().intersects(b.rect());
 }
 
 
 //deflects the ball off a block
 void deflectBall(Sprite &ball, const Sprite &block) {
-    Rect<int> ballRect = ball.getRect();
-    Rect<int> blockRect = block.getRect();
+    Rect<int> ballRect = ball.rect();
+    Rect<int> blockRect = block.rect();
 
-    if (ballRect.getLeft() == blockRect.getRight()) {
+    if (ballRect.left() == blockRect.right()) {
         ball.velocity.setX(1);
     }
-    else if (ballRect.getRight() == blockRect.getLeft()) {
+    else if (ballRect.right() == blockRect.left()) {
         ball.velocity.setX(-1);
     }
 
-    if (ballRect.getTop() == blockRect.getBottom()) {
+    if (ballRect.top() == blockRect.bottom()) {
         ball.velocity.setY(1);
     }
-    else if (ballRect.getBottom() == blockRect.getTop()) {
+    else if (ballRect.bottom() == blockRect.top()) {
         ball.velocity.setY(-1);
     }
 }
@@ -82,7 +82,7 @@ int main() {
     UserEventSource ues;
 
     //bind the resources to the event queue
-    eventQueue << Keyboard::getEventSource() << Mouse::getEventSource() << display << timer << ues;
+    eventQueue << Keyboard::eventSource() << Mouse::eventSource() << display << timer << ues;
 
     //bitmaps
     Bitmap paddleBmp("data/paddle.bmp");
@@ -92,24 +92,24 @@ int main() {
     std::vector<Bitmap> stones;
     for(int i = 1; i <= 23; ++i) {
         stones.push_back(Bitmap(String("data/stone") + i + ".jpg"));
-    } 
+    }
 
     //blocks
     std::vector<SpritePtr> blocks;
-    int stoneWidth = stones[0].getWidth();
-    int stoneHeight = stones[0].getHeight();
-    int blockCols = display.getWidth() / stoneWidth;
-    int blockRows = 2 * display.getHeight() / 3 / stoneHeight;
+    int stoneWidth = stones[0].width();
+    int stoneHeight = stones[0].height();
+    int blockCols = display.width() / stoneWidth;
+    int blockRows = 2 * display.height() / 3 / stoneHeight;
     for(int j = 0; j < blockRows; ++j) {
         for(int i = 0; i < blockCols; ++i) {
             blocks.push_back(SpritePtr(new Sprite(makePoint(i * stoneWidth, j * stoneHeight), stones[rnd(stones.size())])));
         }
-    } 
+    }
 
     //paddle and ball sprites
-    auto paddleStartPos = makePoint(display.getWidth()/2 - paddleBmp.getWidth()/2, display.getHeight() - paddleBmp.getHeight());
+    auto paddleStartPos = makePoint(display.width()/2 - paddleBmp.width()/2, display.height() - paddleBmp.height());
     Sprite paddle(paddleStartPos, paddleBmp);
-    auto ballStartPos = makePoint(paddle.position.getX() + paddleBmp.getWidth()/2 - ballBmp.getWidth()/2, paddle.position.getY() - ballBmp.getHeight());
+    auto ballStartPos = makePoint(paddle.position.x() + paddleBmp.width()/2 - ballBmp.width()/2, paddle.position.y() - ballBmp.height());
     Sprite ball(ballStartPos, ballBmp);
 
     NativeTextLog textLog("ALX Example Debug Window");
@@ -121,7 +121,7 @@ int main() {
         ball.velocity.set(0, 0);
         MouseState mouseState;
         mouseState.retrieve();
-        display.setMousePosition(display.getWidth()/2, mouseState.getMouseY());
+        display.setMousePosition(display.width()/2, mouseState.mouseY());
     };
 
 
@@ -131,17 +131,17 @@ int main() {
         ball.position += ball.velocity;
 
         //invert the ball's horizontal velocity if it hits the screen horizontal end
-        if (ball.position.getX() == 0 || ball.position.getX() == display.getWidth() - ball.bitmap.getWidth()) {
-            ball.velocity.setX(-ball.velocity.getX());
+        if (ball.position.x() == 0 || ball.position.x() == display.width() - ball.bitmap.width()) {
+            ball.velocity.setX(-ball.velocity.x());
         }
 
         //invert the ball's vertical velocity if it hits the screen top
-        if (ball.position.getY() == 0) {
+        if (ball.position.y() == 0) {
             ball.velocity.setY(1);
         }
 
         //reset the game if the ball reaches the bottom of the screen
-        if (ball.position.getY() == display.getHeight()) {
+        if (ball.position.y() == display.height()) {
             reset();
             return;
         }
@@ -157,7 +157,7 @@ int main() {
         //check if the ball collides with the paddle
         if (collision(ball, paddle)) {
             textLog << "collision between ball and paddle\n";
-            if (ball.getRect().getCenterX() < paddle.getRect().getCenterX()) {
+            if (ball.rect().centerX() < paddle.rect().centerX()) {
                 ball.velocity.setX(-1);
             }
             else {
@@ -198,10 +198,10 @@ int main() {
         Event event = eventQueue.waitForEvent();
 
         //process event
-        switch (event.getType()) {
+        switch (event.type()) {
             //key down
             case ALLEGRO_EVENT_KEY_DOWN:
-                switch (event.getKeyboardKeycode()) {
+                switch (event.keyboardKeycode()) {
 
                     //end the loop
                     case ALLEGRO_KEY_ESCAPE:
@@ -212,9 +212,9 @@ int main() {
 
             //mouse
             case ALLEGRO_EVENT_MOUSE_AXES:
-                paddle.position.setX(std::max(0, std::min(event.getMouseX() - paddle.bitmap.getWidth()/2, display.getWidth() - paddle.bitmap.getWidth())));
+                paddle.position.setX(std::max(0, std::min(event.mouseX() - paddle.bitmap.width()/2, display.width() - paddle.bitmap.width())));
                 if (ball.velocity == Point<int>(0, 0)) {
-                    ball.position.setX(paddle.position.getX() + paddle.bitmap.getWidth()/2 - ball.bitmap.getWidth()/2);
+                    ball.position.setX(paddle.position.x() + paddle.bitmap.width()/2 - ball.bitmap.width()/2);
                 }
                 break;
 
@@ -227,7 +227,7 @@ int main() {
 
             //timer
             case ALLEGRO_EVENT_TIMER:
-                if (event.getTimer() == timer) {
+                if (event.timer() == timer) {
                     redraw = true;
                     updateLogic();
                 }

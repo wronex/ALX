@@ -45,7 +45,7 @@ public:
         returns the stop flag.
         @return the stop flag.
      */
-    bool getStop() const {
+    bool stop() const {
         return al_get_thread_should_stop(get());
     }
 

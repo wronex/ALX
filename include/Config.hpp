@@ -77,7 +77,7 @@ public:
         @param key name of key.
         @return the key's value or null.
      */
-    String getValue(const char *section, const char *key) const {
+    String value(const char *section, const char *key) const {
         return String(al_get_config_value(get(), section, key));
     }
 
@@ -87,7 +87,7 @@ public:
         @param key name of key.
         @return the key's value or null.
      */
-    String getValue(const std::vector<const char *> &sections, const char *key) const {
+    String value(const std::vector<const char *> &sections, const char *key) const {
         for(const char *section : sections) {
             const char *value = al_get_config_value(get(), section, key);
             if (value) return value;
@@ -109,7 +109,7 @@ public:
         Returns a container for sections.
         @return a container for sections.
      */
-    ConfigSectionContainer getSections() const {
+    ConfigSectionContainer sections() const {
         return *this;
     }
 
@@ -118,7 +118,7 @@ public:
         @param section section name.
         @return a container for entries of a section.
      */
-    ConfigEntryContainer getEntries(const char *section) const {
+    ConfigEntryContainer entries(const char *section) const {
         return ConfigEntryContainer(section, *this);
     }
 

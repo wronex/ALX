@@ -68,7 +68,7 @@ public:
         Returns the left coordinate.
         @return the left coordinate.
      */
-    T getLeft() const {
+    T left() const {
         return m_left;
     }
 
@@ -76,7 +76,7 @@ public:
         Returns the top coordinate.
         @return the top coordinate.
      */
-    T getTop() const {
+    T top() const {
         return m_top;
     }
 
@@ -84,7 +84,7 @@ public:
         Returns the right coordinate.
         @return the right coordinate.
      */
-    T getRight() const {
+    T right() const {
         return m_right;
     }
 
@@ -92,35 +92,35 @@ public:
         Returns the bottom coordinate.
         @return the bottom coordinate.
      */
-    T getBottom() const {
+    T bottom() const {
         return m_bottom;
     }
 
     /**
         Returns the top-left coordinates of the rectangle.
      */
-    Point<T> getTopLeft() const {
+    Point<T> topLeft() const {
         return Point<T>(m_left, m_top);
     }
 
     /**
         Returns the top-right coordinates of the rectangle.
      */
-    Point<T> getTopRight() const {
+    Point<T> topRight() const {
         return Point<T>(m_right, m_top);
     }
 
     /**
         Returns the bottom-left coordinates of the rectangle.
      */
-    Point<T> getBottomLeft() const {
+    Point<T> bottomLeft() const {
         return Point<T>(m_left, m_bottom);
     }
 
     /**
         Returns the bottom-right coordinates of the rectangle.
      */
-    Point<T> getBottomRight() const {
+    Point<T> bottomRight() const {
         return Point<T>(m_right, m_bottom);
     }
 
@@ -128,7 +128,7 @@ public:
         Returns the width.
         @return the width.
      */
-    T getWidth() const {
+    T width() const {
         return m_right - m_left + 1;
     }
 
@@ -136,39 +136,39 @@ public:
         Returns the height.
         @return the height.
      */
-    T getHeight() const {
+    T height() const {
         return m_bottom - m_top + 1;
     }
 
     /**
         Returns the size of the rectangle.
      */
-    Size<T> getSize() const {
-        return Size<T>(getWidth(), getHeight());
+    Size<T> size() const {
+        return Size<T>(width(), height());
     }
 
     /**
         Returns the horizontal center.
         @return the horizontal center.
      */
-    T getCenterX() const {
-        return m_left + getWidth() / 2;
+    T centerX() const {
+        return m_left + width() / 2;
     }
 
     /**
         Returns the vertical center.
         @return the vertical center.
      */
-    T getCenterY() const {
-        return m_top + getHeight() / 2;
+    T centerY() const {
+        return m_top + height() / 2;
     }
 
     /**
         Returns the rectangle's center.
         @return the rectangle's center.
      */
-    Point<T> getCenter() const {
-        return Point<T>(getCenterX(), getCenterY());
+    Point<T> center() const {
+        return Point<T>(centerX(), centerY());
     }
 
     /**
@@ -187,7 +187,7 @@ public:
         @return true if coordinates within the rectangle.
      */
     bool intersects(const Point<T> &pt) const {
-        return intersects(pt.getX(), pt.getY());
+        return intersects(pt.x(), pt.y());
     }
 
     /**
@@ -297,7 +297,7 @@ public:
         @param pt coordinates.
      */
     void setTopLeft(const Point<T> &pt) {
-        setTopLeft(pt.getX(), pt.getY());
+        setTopLeft(pt.x(), pt.y());
     }
 
     /**
@@ -315,7 +315,7 @@ public:
         @param pt coordinates.
      */
     void setTopRight(const Point<T> &pt) {
-        setTopRight(pt.getX(), pt.getY());
+        setTopRight(pt.x(), pt.y());
     }
 
     /**
@@ -333,7 +333,7 @@ public:
         @param pt coordinates.
      */
     void setBottomLeft(const Point<T> &pt) {
-        setBottomLeft(pt.getX(), pt.getY());
+        setBottomLeft(pt.x(), pt.y());
     }
 
     /**
@@ -351,7 +351,7 @@ public:
         @param pt coordinates.
      */
     void setBottomRight(const Point<T> &pt) {
-        setBottomRight(pt.getX(), pt.getY());
+        setBottomRight(pt.x(), pt.y());
     }
 
     /**
@@ -385,7 +385,7 @@ public:
         @param sz size.
      */
     void setSize(const Size<T> &sz) {
-        setSize(sz.getWidth(), sz.getHeight());
+        setSize(sz.width(), sz.height());
     }
 
     /**
@@ -393,7 +393,7 @@ public:
         @param cx new center x.
      */
     void setCenterX(T cx) {
-        T w = getWidth();
+        T w = width();
         m_left  = cx - w/2;
         m_right = m_left + w - 1;
     }
@@ -403,7 +403,7 @@ public:
         @param cy new center y.
      */
     void setCenterY(T cy) {
-        T h = getHeight();
+        T h = height();
         m_top    = cy - h/2;
         m_bottom = m_top + h - 1;
     }
@@ -423,7 +423,7 @@ public:
         @param cpt center point.
      */
     void setCenter(const Point<T> &cpt) {
-        setCenter(cpt.getX(), cpt.getY());
+        setCenter(cpt.x(), cpt.y());
     }
 
     /**
@@ -446,10 +446,10 @@ public:
         @param size size.
      */
     void set(const Point<T> &topLeft, const Size<T> &size) {
-        m_left   = topLeft.getX();
-        m_top    = topLeft.getY();
-        m_right  = m_left + size.getWidth()  - 1;
-        m_bottom = m_top  + size.getHeight() - 1;
+        m_left   = topLeft.x();
+        m_top    = topLeft.y();
+        m_right  = m_left + size.width()  - 1;
+        m_bottom = m_top  + size.height() - 1;
     }
 
     /**
@@ -457,7 +457,7 @@ public:
         @param x new left position.
      */
     void moveToX(T x) {
-        T w = getWidth();
+        T w = width();
         m_left = x;
         m_right = m_left + w - 1;
     }
@@ -467,7 +467,7 @@ public:
         @param y new top position.
      */
     void moveToY(T y) {
-        T h = getHeight();
+        T h = height();
         m_top = y;
         m_bottom = m_top + h - 1;
     }
@@ -487,36 +487,36 @@ public:
         @param pt new top-left position.
      */
     void moveTo(const Point<T> &pt) {
-        moveToX(pt.getX());
-        moveToY(pt.getY());
+        moveToX(pt.x());
+        moveToY(pt.y());
     }
 
     /**
         Copy this into another rect with the given x position.
      */
     Rect<T> moveToX(T x) const {
-        return Rect<T>(Point<T>(x, getTop()), getSize());
+        return Rect<T>(Point<T>(x, top()), size());
     }
 
     /**
         Copy this into another rect with the given y position.
      */
     Rect<T> moveToY(T y) const {
-        return Rect<T>(Point<T>(getLeft(), y), getSize());
+        return Rect<T>(Point<T>(left(), y), size());
     }
 
     /**
         Copy this into another rect with the given x, y position.
      */
     Rect<T> moveTo(T x, T y) const {
-        return Rect<T>(Point<T>(x, y), getSize());
+        return Rect<T>(Point<T>(x, y), size());
     }
 
     /**
         Copy this into another rect with the given x, y position.
      */
     Rect<T> moveTo(const Point<T> &pt) const {
-        return Rect<T>(pt, getSize());
+        return Rect<T>(pt, size());
     }
 
     /**
@@ -524,7 +524,7 @@ public:
         @param dx horizontal delta.
      */
     void offsetByX(T dx) {
-        T w = getWidth();
+        T w = width();
         m_left += dx;
         m_right = m_left + w - 1;
     }
@@ -534,7 +534,7 @@ public:
         @param dy vertical delta.
      */
     void offsetByY(T dy) {
-        T h = getHeight();
+        T h = height();
         m_top += dy;
         m_bottom = m_top + h - 1;
     }
@@ -554,7 +554,7 @@ public:
         @param dpt delta point.
      */
     void offsetBy(const Point<T> &dpt) {
-        offsetBy(dpt.getX(), dpt.getY());
+        offsetBy(dpt.x(), dpt.y());
     }
 
     /**
@@ -562,35 +562,35 @@ public:
         @param dsz delta size.
      */
     void offsetBy(const Size<T> &dsz) {
-        offsetBy(dsz.getWidth(), dsz.getHeight());
+        offsetBy(dsz.width(), dsz.height());
     }
 
     /**
         Offsets a copy of this rectangle horizontally.
      */
     Rect<T> offsetByX(T dx) const {
-        return Rect<T>(Point<T>(getLeft() + dx, getTop()), getSize());
+        return Rect<T>(Point<T>(left() + dx, top()), size());
     }
 
     /**
         Offsets a copy of this rectangle vertically.
      */
     Rect<T> offsetByY(T dy) const {
-        return Rect<T>(Point<T>(getLeft(), getTop() + dy), getSize());
+        return Rect<T>(Point<T>(left(), top() + dy), size());
     }
 
     /**
         Offsets a copy of this rectangle.
      */
     Rect<T> offsetBy(T dx, T dy) const {
-        return Rect<T>(Point<T>(getLeft() + dx, getTop() + dy), getSize());
+        return Rect<T>(Point<T>(left() + dx, top() + dy), size());
     }
 
     /**
         Offsets a copy of this rectangle.
      */
     Rect<T> offsetBy(const Point<T> &dpt) const {
-        return offsetBy(dpt.getX(), dpt.getY());
+        return offsetBy(dpt.x(), dpt.y());
     }
 
     /**
@@ -651,7 +651,7 @@ public:
         Returns the current bitmap clipping.
         @return A rectangle that contains the current clipping.
      */
-    static Rect<T> getClipping() {
+    static Rect<T> clipping() {
         int x, y, w, h;
         al_get_clipping_rectangle(&x, &y, &w, &h);
         return Rect<T>(Point<T>(x, y), Size<T>(w, h));
@@ -661,7 +661,7 @@ public:
         Sets the current clipping from this rectangle.
      */
     void setClipping() const {
-        al_set_clipping_rectangle(m_left, m_top, getWidth(), getHeight());
+        al_set_clipping_rectangle(m_left, m_top, width(), height());
     }
 
 private:
@@ -706,7 +706,7 @@ template <class T> Rect<T> makeRect(const Point<T> &pt, const Size<T> &sz) {
     Output a rectangle.
  */
 template <class Char, class CharTraits, class T> std::basic_ostream<Char, CharTraits> &operator << (std::basic_ostream<Char, CharTraits> &stream, const alx::Rect<T> &rct) {
-    std::cout << "[x=" << rct.getLeft() << " y=" << rct.getTop() << " w=" << rct.getWidth() << " h=" << rct.getHeight() << "]";
+    std::cout << "[x=" << rct.left() << " y=" << rct.top() << " w=" << rct.width() << " h=" << rct.height() << "]";
     return stream;
 }
 

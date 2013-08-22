@@ -32,7 +32,7 @@ public:
         Retrieves the event source for the object.
         @return the event source for the object.
      */
-    EventSource getEventSource() const {
+    EventSource eventSource() const {
         return EventSource(const_cast<ALLEGRO_EVENT_SOURCE *>(&m_event_source), false);
     }
 
@@ -74,7 +74,7 @@ public:
      */
     bool emitUserEvent(UserEvent *userEvent) {
         ALLEGRO_EVENT event;
-        event.user.type = userEvent->getType();
+        event.user.type = userEvent->type();
         event.user.data1 = (intptr_t)userEvent;
         return al_emit_user_event(&m_event_source, &event, &_userEventDestructor);
     }

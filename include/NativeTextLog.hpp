@@ -35,7 +35,7 @@ public:
         Returns the event source for this object.
         @return the event source for this object.
      */
-    EventSource getEventSource() const {
+    EventSource eventSource() const {
         return EventSource(al_get_native_text_log_event_source(get()), false);
     }
 
@@ -67,7 +67,7 @@ public:
         @param str string.
      */
     void append(const String &str) {
-        al_append_native_text_log(get(), "%s", str.cstr());        
+        al_append_native_text_log(get(), "%s", str.cstr());
     }
 
     /**
@@ -76,7 +76,7 @@ public:
         @return reference to this.
      */
     NativeTextLog &operator << (const char *str) {
-        al_append_native_text_log(get(), "%s", str);        
+        al_append_native_text_log(get(), "%s", str);
         return *this;
     }
 
@@ -86,7 +86,7 @@ public:
         @return reference to this.
      */
     NativeTextLog &operator << (const String &str) {
-        al_append_native_text_log(get(), "%s", str.cstr());        
+        al_append_native_text_log(get(), "%s", str.cstr());
         return *this;
     }
 
@@ -95,7 +95,7 @@ public:
         @param object allegro object.
         @param managed if true, the object will be deleted automatically when its last reference will be deleted.
      */
-    NativeTextLog(ALLEGRO_TEXTLOG *object, bool managed = true) : 
+    NativeTextLog(ALLEGRO_TEXTLOG *object, bool managed = true) :
         Shared(object, managed, al_close_native_text_log)
     {
     }

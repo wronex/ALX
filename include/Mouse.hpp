@@ -17,7 +17,7 @@ public:
         Returns the mouse event source.
         @return the mouse event source.
      */
-    static EventSource getEventSource() {
+    static EventSource eventSource() {
         return EventSource(al_get_mouse_event_source(), false);
     }
 };

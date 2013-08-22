@@ -48,7 +48,7 @@ public:
         Returns the channel configuration of the sample.
         @return the channel configuration of the sample.
      */
-    ALLEGRO_CHANNEL_CONF getChannelConfiguration() const {
+    ALLEGRO_CHANNEL_CONF channelConfiguration() const {
         return al_get_sample_channels(get());
     }
 
@@ -56,7 +56,7 @@ public:
         Returns the depth of the sample.
         @return the depth of the sample.
      */
-    ALLEGRO_AUDIO_DEPTH getDepth() const {
+    ALLEGRO_AUDIO_DEPTH depth() const {
         return al_get_sample_depth(get());
     }
 
@@ -64,7 +64,7 @@ public:
         Returns the frequency of the sample.
         @return the frequency of the sample.
      */
-    unsigned int getFrequency() const {
+    unsigned int frequency() const {
         return al_get_sample_frequency(get());
     }
 
@@ -72,7 +72,7 @@ public:
         Returns the length of the sample.
         @return the length of the sample.
      */
-    unsigned int getLength() const {
+    unsigned int length() const {
         return al_get_sample_length(get());
     }
 
@@ -80,7 +80,7 @@ public:
         Returns a pointer to the sample data.
         @return a pointer to the sample data.
      */
-    void *getData() const {
+    void *data() const {
         return al_get_sample_data(get());
     }
 

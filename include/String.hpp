@@ -218,7 +218,7 @@ public:
         Returns the number of bytes the string occupies.
         @return the number of bytes the string occupies.
      */
-    size_t getSize() const {
+    size_t size() const {
         return al_ustr_size(get());
     }
 
@@ -226,7 +226,7 @@ public:
         Returns the number of code points the string contains.
         @return the number of code points the string contains.
      */
-    size_t getLength() const {
+    size_t length() const {
         return al_ustr_length(get());
     }
 
@@ -243,7 +243,7 @@ public:
         @param codePointIndex index of the code point.
         @return the byte offset of the code point index.
      */
-    int getOffset(int codePointIndex) const {
+    int offset(int codePointIndex) const {
         return al_ustr_offset(get(), codePointIndex);
     }
 
@@ -252,7 +252,7 @@ public:
         @param offset start offset.
         @return new offset.
      */
-    int getPrevOffset(int offset) const {
+    int prevOffset(int offset) const {
         al_ustr_prev(get(), &offset);
         return offset;
     }
@@ -262,7 +262,7 @@ public:
         @param offset start offset.
         @return new offset.
      */
-    int getNextOffset(int offset) const {
+    int nextOffset(int offset) const {
         al_ustr_next(get(), &offset);
         return offset;
     }
@@ -272,7 +272,7 @@ public:
         @param offset offset.
         @return the code point.
      */
-    int32_t getCodePoint(int offset) const {
+    int32_t codePoint(int offset) const {
         return al_ustr_get(get(), offset);
     }
 
@@ -524,7 +524,7 @@ public:
             Returns the allegro string.
             @return the allegro string.
          */
-        ALLEGRO_USTR *getString() const {
+        ALLEGRO_USTR *string() const {
             return m_string;
         }
 
@@ -532,7 +532,7 @@ public:
             Returns the offset.
             @return the offset.
          */
-        int getOffset() const {
+        int offset() const {
             return m_offset;
         }
 
@@ -866,7 +866,7 @@ public:
         @return the string's length.
      */
     size_t size() const {
-        return getLength();
+        return length();
     }
 
     /**
@@ -874,7 +874,7 @@ public:
         @return the string's length.
      */
     size_t length() const {
-        return getLength();
+        return length();
     }
 
     /**

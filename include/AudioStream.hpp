@@ -61,7 +61,7 @@ public:
         Returns the event source for this stream.
         @return the event source for this stream.
      */
-    EventSource getEventSource() const {
+    EventSource eventSource() const {
         return EventSource(al_get_audio_stream_event_source(get()), false);
     }
 
@@ -69,7 +69,7 @@ public:
         Returns the stream's frequency.
         @return the stream's frequency.
      */
-    unsigned int getFrequency() const {
+    unsigned int frequency() const {
         return al_get_audio_stream_frequency(get());
     }
 
@@ -77,7 +77,7 @@ public:
         Returns the stream's channel configuration.
         @return the stream's channel configuration.
      */
-    ALLEGRO_CHANNEL_CONF getChannelConfiguration() const {
+    ALLEGRO_CHANNEL_CONF channelConfiguration() const {
         return al_get_audio_stream_channels(get());
     }
 
@@ -85,7 +85,7 @@ public:
         Returns the stream's depth.
         @return the stream's depth.
      */
-    ALLEGRO_AUDIO_DEPTH getDepth() const {
+    ALLEGRO_AUDIO_DEPTH depth() const {
         return al_get_audio_stream_depth(get());
     }
 
@@ -93,7 +93,7 @@ public:
         Returns the stream's samples count.
         @return the stream's samples count.
      */
-    unsigned int getLength() const {
+    unsigned int length() const {
         return al_get_audio_stream_length(get());
     }
 
@@ -101,7 +101,7 @@ public:
         Returns the relative speed playback.
         @return the relative speed playback.
      */
-    float getSpeed() const {
+    float speed() const {
         return al_get_audio_stream_speed(get());
     }
 
@@ -109,7 +109,7 @@ public:
         Returns the playback gain.
         @return the playback gain.
      */
-    float getGain() const {
+    float gain() const {
         return al_get_audio_stream_gain(get());
     }
 
@@ -117,7 +117,7 @@ public:
         Returns the pan.
         @return the pan.
      */
-    float getPan() const {
+    float pan() const {
         return al_get_audio_stream_pan(get());
     }
 
@@ -141,7 +141,7 @@ public:
         Returns the play mode.
         @return the play mode.
      */
-    ALLEGRO_PLAYMODE getPlayMode() const {
+    ALLEGRO_PLAYMODE playMode() const {
         return al_get_audio_stream_playmode(get());
     }
 
@@ -149,7 +149,7 @@ public:
         Returns a buffer to provide new sample data to the stream.
         @return a buffer to provide new sample data to the stream.
      */
-    void *getFragment() const {
+    void *fragment() const {
         return al_get_audio_stream_fragment(get());
     }
 
@@ -157,7 +157,7 @@ public:
         Returns the number of fragments the stream uses.
         @return the number of fragments the stream uses.
      */
-    unsigned int getFragmentCount() const {
+    unsigned int fragmentCount() const {
         return al_get_audio_stream_fragments(get());
     }
 
@@ -165,7 +165,7 @@ public:
         Returns the number of available fragments.
         @return the number of available fragments.
      */
-    unsigned int getAvailableFragmentCount() const {
+    unsigned int availableFragmentCount() const {
         return al_get_available_audio_stream_fragments(get());
     }
 
@@ -173,7 +173,7 @@ public:
         Returns the time position of the stream, in seconds.
         @return the time position of the stream, in seconds.
      */
-    double getTimePosition() const {
+    double timePosition() const {
         return al_get_audio_stream_position_secs(get());
     }
 
@@ -181,7 +181,7 @@ public:
         Returns the length of the stream, in seconds.
         @return the length of the stream, in seconds.
      */
-    double getTimeLength() const {
+    double timeLength() const {
         return al_get_audio_stream_length_secs(get());
     }
 
@@ -254,8 +254,8 @@ public:
     }
 
     /**
-        This function needs to be called for every successful call of getFragment to indicate that the buffer is filled with new data.
-        @param val the fragmnet pointer returned by getFragment.
+        This function needs to be called for every successful call of fragment to indicate that the buffer is filled with new data.
+        @param val the fragmnet pointer returned by fragment.
         @return true on success.
      */
     bool setFragment(void *val) {

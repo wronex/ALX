@@ -32,7 +32,7 @@ public:
         Returns the sample instance's channel configuration.
         @return the sample instance's channel configuration.
      */
-    ALLEGRO_CHANNEL_CONF getChannelConfiguration() const {
+    ALLEGRO_CHANNEL_CONF channelConfiguration() const {
         return al_get_sample_instance_channels(get());
     }
 
@@ -40,7 +40,7 @@ public:
         Returns the sample instance's depth.
         @return the sample instance's depth.
      */
-    ALLEGRO_AUDIO_DEPTH getDepth() const {
+    ALLEGRO_AUDIO_DEPTH depth() const {
         return al_get_sample_instance_depth(get());
     }
 
@@ -48,7 +48,7 @@ public:
         Returns the sample instance's frequency.
         @return the sample instance's frequency.
      */
-    unsigned int getFrequency() const {
+    unsigned int frequency() const {
         return al_get_sample_instance_frequency(get());
     }
 
@@ -56,7 +56,7 @@ public:
         Returns the sample instance's length.
         @return the sample instance's length.
      */
-    unsigned int getLength() const {
+    unsigned int length() const {
         return al_get_sample_instance_length(get());
     }
 
@@ -64,7 +64,7 @@ public:
         Returns the sample instance's position.
         @return the sample instance's position.
      */
-    unsigned int getPosition() const {
+    unsigned int position() const {
         return al_get_sample_instance_position(get());
     }
 
@@ -72,7 +72,7 @@ public:
         Returns the sample instance's speed.
         @return the sample instance's speed.
      */
-    float getSpeed() const {
+    float speed() const {
         return al_get_sample_instance_speed(get());
     }
 
@@ -80,7 +80,7 @@ public:
         Returns the sample instance's gain.
         @return the sample instance's gain.
      */
-    float getGain() const {
+    float gain() const {
         return al_get_sample_instance_gain(get());
     }
 
@@ -88,7 +88,7 @@ public:
         Returns the sample instance's pan.
         @return the sample instance's pan.
      */
-    float getPan() const {
+    float pan() const {
         return al_get_sample_instance_pan(get());
     }
 
@@ -96,7 +96,7 @@ public:
         Returns the sample instance's duration, in seconds.
         @return the sample instance's duration, in seconds.
      */
-    float getDuration() const {
+    float duration() const {
         return al_get_sample_instance_time(get());
     }
 
@@ -104,7 +104,7 @@ public:
         Returns the sample instance's play mode.
         @return the sample instance's play mode.
      */
-    ALLEGRO_PLAYMODE getPlayMode() const {
+    ALLEGRO_PLAYMODE playMode() const {
         return al_get_sample_instance_playmode(get());
     }
 
@@ -128,7 +128,7 @@ public:
         Returns the sample instance's sample.
         @return the sample instance's sample.
      */
-    Sample getSample() const {
+    Sample sample() const {
         return Sample(al_get_sample(get()), false);
     }
 
@@ -233,7 +233,7 @@ public:
         @param object allegro object.
         @param managed if true, the object will be deleted automatically when its last reference will be deleted.
      */
-    SampleInstance(ALLEGRO_SAMPLE_INSTANCE *object, bool managed = true) : 
+    SampleInstance(ALLEGRO_SAMPLE_INSTANCE *object, bool managed = true) :
         Shared(object, managed, al_destroy_sample_instance)
     {
     }

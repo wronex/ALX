@@ -83,7 +83,7 @@ public:
         @param str null-terminated string.
         @return pixel width of the given text.
      */
-    int getWidth(const char *str) const {
+    int width(const char *str) const {
         return al_get_text_width(get(), str);
     }
 
@@ -92,7 +92,7 @@ public:
         @param str string.
         @return pixel width of the given text.
      */
-    int getWidth(const String &str) const {
+    int width(const String &str) const {
         return al_get_ustr_width(get(), str.get());
     }
 
@@ -100,7 +100,7 @@ public:
         Returns the total height of the font.
         @return the font's height.
      */
-    int getHeight() const {
+    int height() const {
         return al_get_font_line_height(get());
     }
 
@@ -108,7 +108,7 @@ public:
         Returns the font ascent.
         @return the font ascent.
      */
-    int getAscent() const {
+    int ascent() const {
         return al_get_font_ascent(get());
     }
 
@@ -116,7 +116,7 @@ public:
         Returns the font descent.
         @return the font descent.
      */
-    int getDescent() const {
+    int descent() const {
         return al_get_font_descent(get());
     }
 
@@ -125,7 +125,7 @@ public:
         @param text text.
         @return dimensions.
      */
-    Rect<int> getDimensions(const char *text) const {
+    Rect<int> dimensions(const char *text) const {
         int x, y, w, h;
         al_get_text_dimensions(get(), text, &x, &y, &w, &h);
         return makeRect(makePoint(x, y), makeSize(w, h));
@@ -136,7 +136,7 @@ public:
         @param text text.
         @return dimensions.
      */
-    Rect<int> getDimensions(const String &text) const {
+    Rect<int> dimensions(const String &text) const {
         int x, y, w, h;
         al_get_ustr_dimensions(get(), text.get(), &x, &y, &w, &h);
         return makeRect(makePoint(x, y), makeSize(w, h));

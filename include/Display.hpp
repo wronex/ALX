@@ -42,7 +42,7 @@ public:
         Returns a bitmap object that represents the backbuffer.
         @return a bitmap object that represents the backbuffer.
      */
-    Bitmap getBackbuffer() const {
+    Bitmap backbuffer() const {
         return Bitmap(al_get_backbuffer(get()), false);
     }
 
@@ -50,7 +50,7 @@ public:
         Returns the flags of the display.
         @return the flags of the display.
      */
-    int getFlags() const {
+    int flags() const {
         return al_get_display_flags(get());
     }
 
@@ -58,7 +58,7 @@ public:
         Returns the pixel format of the display.
         @return the pixel format of the display.
      */
-    int getFormat() const {
+    int format() const {
         return al_get_display_format(get());
     }
 
@@ -66,7 +66,7 @@ public:
         Returns the refresh rate of the display.
         @return the refresh rate of the display.
      */
-    int getRefreshRate() const {
+    int refreshRate() const {
         return al_get_display_refresh_rate(get());
     }
 
@@ -74,7 +74,7 @@ public:
         Returns the window position.
         @return the window position.
      */
-    Point<int> getWindowPosition() const {
+    Point<int> windowPosition() const {
         int x, y;
         al_get_window_position(get(), &x, &y);
         return Point<int>(x, y);
@@ -94,14 +94,14 @@ public:
         @param pos position.
      */
     void setWindowPosition(const Point<int> &pos) {
-        al_set_window_position(get(), pos.getX(), pos.getY());
+        al_set_window_position(get(), pos.x(), pos.y());
     }
 
     /**
         Returns the width of the display.
         @return the width of the display.
      */
-    int getWidth() const {
+    int width() const {
         return al_get_display_width(get());
     }
 
@@ -109,7 +109,7 @@ public:
         Returns the height of the display.
         @return the height of the display.
      */
-    int getHeight() const {
+    int height() const {
         return al_get_display_height(get());
     }
 
@@ -117,8 +117,8 @@ public:
         Returns the size of the display.
         @return the size of the display.
      */
-    Size<int> getSize() const {
-        return Size<int>(getWidth(), getHeight());
+    Size<int> size() const {
+        return Size<int>(width(), height());
     }
 
     /**
@@ -137,7 +137,7 @@ public:
         @return true on success.
      */
     bool setSize(const Size<int> &size) {
-        return setSize(size.getWidth(), size.getHeight());
+        return setSize(size.width(), size.height());
     }
 
     /**
@@ -153,7 +153,7 @@ public:
         @param option option identifier.
         @return option value.
      */
-    int getOption(int option) const {
+    int option(int option) const {
         return al_get_display_option(get(), option);
     }
 
@@ -179,7 +179,7 @@ public:
         Returns the event source of the display.
         @return the event source of the display.
      */
-    EventSource getEventSource() const {
+    EventSource eventSource() const {
         return EventSource(al_get_display_event_source(get()), false);
     }
 
@@ -188,7 +188,7 @@ public:
         @return the event source of the display.
      */
     operator EventSource() const {
-        return getEventSource();
+        return eventSource();
     }
 
     /**
@@ -203,7 +203,7 @@ public:
         Returns the current display.
         @return the current display.
      */
-    static Display getCurrent() {
+    static Display current() {
         return Display(al_get_current_display(), false);
     }
 
@@ -221,7 +221,7 @@ public:
         @param pt mouse point.
      */
     void setMousePosition(const Point<int> &pt) {
-        setMousePosition(pt.getX(), pt.getY());
+        setMousePosition(pt.x(), pt.y());
     }
 
     /**

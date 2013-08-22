@@ -39,7 +39,7 @@ public:
         Returns the joystick's name.
         @return the joystick's name.
      */
-    String getName() const {
+    String name() const {
         return al_get_joystick_name(get());
     }
 
@@ -48,7 +48,7 @@ public:
         @param stick stick index.
         @return the given stick's name.
      */
-    String getStickName(int stick) const {
+    String stickName(int stick) const {
         return al_get_joystick_stick_name(get(), stick);
     }
 
@@ -58,7 +58,7 @@ public:
         @param axis axis index.
         @return the given stick axis' name.
      */
-    String getAxisName(int stick, int axis) const {
+    String axisName(int stick, int axis) const {
         return al_get_joystick_axis_name(get(), stick, axis);
     }
 
@@ -67,7 +67,7 @@ public:
         @param button button index.
         @return the given button's name.
      */
-    String getButtonName(int button) const {
+    String buttonName(int button) const {
         return al_get_joystick_button_name(get(), button);
     }
 
@@ -76,7 +76,7 @@ public:
         @param stick stick index.
         @return the given stick's flags.
      */
-    int getStickFlags(int stick) const {
+    int stickFlags(int stick) const {
         return al_get_joystick_stick_flags(get(), stick);
     }
 
@@ -84,7 +84,7 @@ public:
         Returns the joystick's number of sticks.
         @return the joystick's number of sticks.
      */
-    int getNumSticks() const {
+    int numSticks() const {
         return al_get_joystick_num_sticks(get());
     }
 
@@ -93,7 +93,7 @@ public:
         @param stick stick index.
         @return the joystick's number of axes.
      */
-    int getNumAxes(int stick) const {
+    int numAxes(int stick) const {
         return al_get_joystick_num_axes(get(), stick);
     }
 
@@ -101,7 +101,7 @@ public:
         Returns the joystick's number of buttons.
         @return the joystick's number of buttons.
      */
-    int getNumButtons() const {
+    int numButtons() const {
         return al_get_joystick_num_buttons(get());
     }
 
@@ -109,7 +109,7 @@ public:
         Returns the joystick event source.
         @return the joystick event source.
      */
-    static EventSource getEventSource() {
+    static EventSource eventSource() {
         return EventSource(al_get_joystick_event_source(), false);
     }
 

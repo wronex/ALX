@@ -22,7 +22,7 @@ Added Bitmap constructors that use Point and Size.
 -------
 
 -added Vector2 base class for Point and Size.
--renamed getAreaLength() to getArea().
+-renamed areaLength() to area().
 -Added operator >> (Event) for EventQueue.
 -Added operator << (UserEvent *) for UserEventSource.
 

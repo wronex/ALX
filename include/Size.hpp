@@ -24,24 +24,24 @@ public:
         Returns the width.
         @return the width.
      */
-    T getWidth() const {
-        return Vector2Base<Size<T>, T>::getX();
+    T width() const {
+        return Vector2Base<Size<T>, T>::x();
     }
 
     /**
         Returns the height.
         @return the height.
      */
-    T getHeight() const {
-        return Vector2Base<Size<T>, T>::getY();
+    T height() const {
+        return Vector2Base<Size<T>, T>::y();
     }
 
     /**
         Returns width * height.
         @return width * height.
      */
-    T getArea() const {
-        return Vector2Base<Size<T>, T>::getProduct();
+    T area() const {
+        return Vector2Base<Size<T>, T>::product();
     }
 
     /**
@@ -50,7 +50,7 @@ public:
         @return true if the test is successful.
      */
     bool operator < (const Size<T> &pt) const {
-        return getArea() < pt.getArea();
+        return area() < pt.area();
     }
 
     /**
@@ -59,7 +59,7 @@ public:
         @return true if the test is successful.
      */
     bool operator <= (const Size<T> &pt) const {
-        return getArea() <= pt.getArea();
+        return area() <= pt.area();
     }
 
     /**
@@ -68,7 +68,7 @@ public:
         @return true if the test is successful.
      */
     bool operator > (const Size<T> &pt) const {
-        return getArea() > pt.getArea();
+        return area() > pt.area();
     }
 
     /**
@@ -77,7 +77,7 @@ public:
         @return true if the test is successful.
      */
     bool operator >= (const Size<T> &pt) const {
-        return getArea() >= pt.getArea();
+        return area() >= pt.area();
     }
 
     /**

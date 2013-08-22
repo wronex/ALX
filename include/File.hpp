@@ -112,7 +112,7 @@ public:
         Returns the file position (the 'ftell' function).
         @return the file position.
      */
-    int64_t getFilePosition() const {
+    int64_t filePosition() const {
         return al_ftell(get());
     }
 
@@ -152,7 +152,7 @@ public:
         Returns the size of the file.
         @return the size of the file.
      */
-    int64_t getSize() const {
+    int64_t size() const {
        return al_fsize(get());
     }
 

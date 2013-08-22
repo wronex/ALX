@@ -36,7 +36,7 @@ public:
         Returns the frequency of the voice.
         @return the frequency of the voice.
      */
-    unsigned int getFrequency() const {
+    unsigned int frequency() const {
         return al_get_voice_frequency(get());
     }
 
@@ -44,7 +44,7 @@ public:
         Returns the channel configuration of the voice.
         @return the channel configuration of the voice.
      */
-    ALLEGRO_CHANNEL_CONF getChannelConfiguration() const {
+    ALLEGRO_CHANNEL_CONF channelConfiguration() const {
         return al_get_voice_channels(get());
     }
 
@@ -52,7 +52,7 @@ public:
         Returns the depth of the voice.
         @return the depth of the voice.
      */
-    ALLEGRO_AUDIO_DEPTH getDepth() const {
+    ALLEGRO_AUDIO_DEPTH depth() const {
         return al_get_voice_depth(get());
     }
 
@@ -68,7 +68,7 @@ public:
         It returns the curent sample's position, if there is one.
         @return the current position.
      */
-    unsigned int getPosition() const {
+    unsigned int position() const {
         return al_get_voice_position(get());
     }
 
@@ -129,7 +129,7 @@ public:
         @param object allegro object.
         @param managed if true, the object will be deleted automatically when its last reference will be deleted.
      */
-    Voice(ALLEGRO_VOICE *object, bool managed = true) : 
+    Voice(ALLEGRO_VOICE *object, bool managed = true) :
         Shared(object, managed, al_destroy_voice)
     {
     }

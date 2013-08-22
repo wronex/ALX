@@ -50,7 +50,7 @@ public:
         Returns the type of the event.
         @return the type of the event.
      */
-    int getType() const {
+    int type() const {
         return get().type;
     }
 
@@ -58,7 +58,7 @@ public:
         Returns the event source.
         @return the event source.
      */
-    EventSource getEventSource() const {
+    EventSource eventSource() const {
         return EventSource(get().any.source, false);
     }
 
@@ -66,7 +66,7 @@ public:
         Returns the timestamp.
         @return the timestamp.
      */
-    double getTimestamp() const {
+    double timestamp() const {
         return get().any.timestamp;
     }
 
@@ -74,7 +74,7 @@ public:
         Returns the display.
         @return the display.
      */
-    Display getDisplay() const {
+    Display display() const {
         return Display(get().display.source, false);
     }
 
@@ -82,7 +82,7 @@ public:
         Returns the display x.
         @return the display x.
      */
-    int getDisplayX() const {
+    int displayX() const {
         return get().display.x;
     }
 
@@ -90,7 +90,7 @@ public:
         Returns the display y.
         @return the display y.
      */
-    int getDisplayY() const {
+    int displayY() const {
         return get().display.y;
     }
 
@@ -98,7 +98,7 @@ public:
         Returns the display width.
         @return the display width.
      */
-    int getDisplayWidth() const {
+    int displayWidth() const {
         return get().display.width;
     }
 
@@ -106,7 +106,7 @@ public:
         Returns the display height.
         @return the display height.
      */
-    int getDisplayHeight() const {
+    int displayHeight() const {
         return get().display.height;
     }
 
@@ -114,7 +114,7 @@ public:
         Returns the display orientation.
         @return the display orientation.
      */
-    int getDisplayOrientation() const {
+    int displayOrientation() const {
         return get().display.orientation;
     }
 
@@ -122,7 +122,7 @@ public:
         Returns the joystick.
         @return the joystick.
      */
-    Joystick getJoystick() const {
+    Joystick joystick() const {
         return Joystick(get().joystick.source, false);
     }
 
@@ -130,7 +130,7 @@ public:
         Returns the joystick id.
         @return the joystick id.
      */
-    Joystick getJoystickId() const {
+    Joystick joystickId() const {
         return Joystick(get().joystick.id, false);
     }
 
@@ -138,7 +138,7 @@ public:
         Returns the joystick stick.
         @return the joystick stick.
      */
-    int getJoystickStick() const {
+    int joystickStick() const {
         return get().joystick.stick;
     }
 
@@ -146,7 +146,7 @@ public:
         Returns the joystick axis.
         @return the joystick axis.
      */
-    int getJoystickAxis() const {
+    int joystickAxis() const {
         return get().joystick.axis;
     }
 
@@ -154,7 +154,7 @@ public:
         Returns the joystick position.
         @return the joystick position.
      */
-    float getJoystickPos() const {
+    float joystickPos() const {
         return get().joystick.pos;
     }
 
@@ -162,7 +162,7 @@ public:
         Returns the joystick button.
         @return the joystick button.
      */
-    int getJoystickButton() const {
+    int joystickButton() const {
         return get().joystick.button;
     }
 
@@ -170,7 +170,7 @@ public:
         Returns the keyboard display.
         @return the keyboard display.
      */
-    Display getKeyboardDisplay() const {
+    Display keyboardDisplay() const {
         return Display(get().keyboard.display, false);
     }
 
@@ -178,7 +178,7 @@ public:
         Returns the keyboard keycode.
         @return the keyboard keycode.
      */
-    int getKeyboardKeycode() const {
+    int keyboardKeycode() const {
         return get().keyboard.keycode;
     }
 
@@ -186,7 +186,7 @@ public:
         Returns the keyboard unicode character.
         @return the keyboard unicode character.
      */
-    int getKeyboardCharacter() const {
+    int keyboardCharacter() const {
         return get().keyboard.unichar;
     }
 
@@ -194,7 +194,7 @@ public:
         Returns the keyboard modifiers.
         @return the keyboard modifiers.
      */
-    int getKeyboardModifiers() const {
+    int keyboardModifiers() const {
         return get().keyboard.modifiers;
     }
 
@@ -202,7 +202,7 @@ public:
         Returns the keyboard repeat flag.
         @return the keyboard repeat flag.
      */
-    bool getKeyboardRepeat() const {
+    bool keyboardRepeat() const {
         return get().keyboard.repeat;
     }
 
@@ -210,7 +210,7 @@ public:
         Returns the mouse display.
         @return the mouse display.
      */
-    Display getMouseDisplay() const {
+    Display mouseDisplay() const {
         return Display(get().mouse.display, false);
     }
 
@@ -218,7 +218,7 @@ public:
         Returns the mouse x.
         @return the mouse x.
      */
-    int getMouseX() const {
+    int mouseX() const {
         return get().mouse.x;
     }
 
@@ -226,7 +226,7 @@ public:
         Returns the mouse y.
         @return the mouse y.
      */
-    int getMouseY() const {
+    int mouseY() const {
         return get().mouse.y;
     }
 
@@ -234,7 +234,7 @@ public:
         Returns the mouse z.
         @return the mouse z.
      */
-    int getMouseZ() const {
+    int mouseZ() const {
         return get().mouse.z;
     }
 
@@ -242,7 +242,7 @@ public:
         Returns the mouse w.
         @return the mouse w.
      */
-    int getMouseW() const {
+    int mouseW() const {
         return get().mouse.w;
     }
 
@@ -250,7 +250,7 @@ public:
         Returns the mouse dx.
         @return the mouse dx.
      */
-    int getMouseDX() const {
+    int mouseDX() const {
         return get().mouse.dx;
     }
 
@@ -258,7 +258,7 @@ public:
         Returns the mouse dy.
         @return the mouse dy.
      */
-    int getMouseDY() const {
+    int mouseDY() const {
         return get().mouse.dy;
     }
 
@@ -266,7 +266,7 @@ public:
         Returns the mouse dz.
         @return the mouse dz.
      */
-    int getMouseDZ() const {
+    int mouseDZ() const {
         return get().mouse.dz;
     }
 
@@ -274,7 +274,7 @@ public:
         Returns the mouse dw.
         @return the mouse dw.
      */
-    int getMouseDW() const {
+    int mouseDW() const {
         return get().mouse.dw;
     }
 
@@ -282,7 +282,7 @@ public:
         Returns the mouse pressure.
         @return the mouse pressure.
      */
-    float getMousePressure() const {
+    float mousePressure() const {
         return get().mouse.pressure;
     }
 
@@ -290,7 +290,7 @@ public:
         Returns the timer.
         @return the timer.
      */
-    Timer getTimer() const {
+    Timer timer() const {
         return Timer(get().timer.source, false);
     }
 
@@ -298,7 +298,7 @@ public:
         Returns the timer count.
         @return the timer count.
      */
-    int64_t getTimerCount() const {
+    int64_t timerCount() const {
         return get().timer.count;
     }
 
@@ -306,7 +306,7 @@ public:
         Returns the timer error.
         @return the timer error.
      */
-    double getTimerError() const {
+    double timerError() const {
         return get().timer.error;
     }
 
@@ -314,7 +314,7 @@ public:
         Returns the user data field 1.
         @return the user data field 1.
      */
-    intptr_t getUserData1() const {
+    intptr_t userData1() const {
         return get().user.data1;
     }
 
@@ -322,7 +322,7 @@ public:
         Returns the user data field 2.
         @return the user data field 2.
      */
-    intptr_t getUserData2() const {
+    intptr_t userData2() const {
         return get().user.data2;
     }
 
@@ -330,7 +330,7 @@ public:
         Returns the user data field 3.
         @return the user data field 3.
      */
-    intptr_t getUserData3() const {
+    intptr_t userData3() const {
         return get().user.data3;
     }
 
@@ -338,7 +338,7 @@ public:
         Returns the user data field 4.
         @return the user data field 4.
      */
-    intptr_t getUserData4() const {
+    intptr_t userData4() const {
         return get().user.data4;
     }
 
@@ -346,8 +346,8 @@ public:
         A user event is stored in event.user.data1.
         @return the user event.
      */
-    UserEvent *getUserEvent() const {
-        return reinterpret_cast<UserEvent *>(getUserData1());
+    UserEvent *userEvent() const {
+        return reinterpret_cast<UserEvent *>(userData1());
     }
 
 private:

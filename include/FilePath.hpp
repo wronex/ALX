@@ -48,7 +48,7 @@ public:
         Returns the drive letter.
         @return the drive letter.
      */
-    String getDrive() const {
+    String drive() const {
         return String(al_get_path_drive(get()), false);
     }
 
@@ -56,7 +56,7 @@ public:
         Returns the number of directory components this path has.
         @return the number of directory components this path has.
      */
-    int getNumComponents() const {
+    int numComponents() const {
         return al_get_path_num_components(get());
     }
 
@@ -65,7 +65,7 @@ public:
         @param index index.
         @return the path component.
      */
-    String getComponent(int index) const {
+    String component(int index) const {
         return String(al_get_path_component(get(), index), false);
     }
 
@@ -73,7 +73,7 @@ public:
         Returns the last directory component.
         @return the last directory component.
      */
-    String getTail() const {
+    String tail() const {
         return String(al_get_path_tail(get()), false);
     }
 
@@ -81,7 +81,7 @@ public:
         Returns the filename of the path.
         @return the filename of the path.
      */
-    String getFilename() const {
+    String filename() const {
         return String(al_get_path_filename(get()), false);
     }
 
@@ -89,7 +89,7 @@ public:
         Returns the basename of the path.
         @return the basename of the path.
      */
-    String getBasename() const {
+    String basename() const {
         return String(al_get_path_basename(get()), false);
     }
 
@@ -97,7 +97,7 @@ public:
         Returns the filename extension.
         @return the filename extension.
      */
-    String getExtension() const {
+    String extension() const {
         return String(al_get_path_extension(get()), false);
     }
 

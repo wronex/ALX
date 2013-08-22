@@ -39,7 +39,7 @@ public:
         @param axis asix index.
         @return the given axis' value.
      */
-    int getAxis(int axis) const {
+    int axis(int axis) const {
         return al_get_mouse_state_axis(&get(), axis);
     }
 
@@ -56,7 +56,7 @@ public:
         Returns the mouse x.
         @return the mouse x.
      */
-    int getMouseX() const {
+    int mouseX() const {
         return get().x;
     }
 
@@ -64,7 +64,7 @@ public:
         Returns the mouse y.
         @return the mouse y.
      */
-    int getMouseY() const {
+    int mouseY() const {
         return get().y;
     }
 
@@ -72,7 +72,7 @@ public:
         Returns the mouse w.
         @return the mouse w.
      */
-    int getMouseW() const {
+    int mouseW() const {
         return get().w;
     }
 
@@ -80,7 +80,7 @@ public:
         Returns the mouse z.
         @return the mouse z.
      */
-    int getMouseZ() const {
+    int mouseZ() const {
         return get().z;
     }
 
@@ -88,7 +88,7 @@ public:
         Returns the mouse buttons .
         @return the mouse x.
      */
-    int getMouseButtons() const {
+    int mouseButtons() const {
         return get().buttons;
     }
 };

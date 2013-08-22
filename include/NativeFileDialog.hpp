@@ -38,7 +38,7 @@ public:
         Returns the number of files selection.
         @return the number of files selection.
      */
-    int getSelectedFileCount() const {
+    int selectedFileCount() const {
         return al_get_native_file_dialog_count(get());
     }
 
@@ -47,7 +47,7 @@ public:
         @param index index of files.
         @return the path of the given selected file.
      */
-    String getSelectedFile(int index) const {
+    String selectedFile(int index) const {
         return String(al_get_native_file_dialog_path(get(), index), false);
     }
 
@@ -55,11 +55,11 @@ public:
         Returns a vector with all selected file paths.
         @return a vector with all selected file paths.
      */
-    std::vector<FilePath> getSelectedFilePaths() const {
+    std::vector<FilePath> selectedFilePaths() const {
         std::vector<FilePath> result;
-        int count = getSelectedFileCount();
+        int count = selectedFileCount();
         for(int index = 0; index < count; ++index) {
-            result.push_back(FilePath(getSelectedFile(index)));
+            result.push_back(FilePath(selectedFile(index)));
         }
         return result;
     }

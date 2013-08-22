@@ -17,7 +17,7 @@ public:
         Returns the keyboard event source.
         @return the keyboard event source.
      */
-    static EventSource getEventSource() {
+    static EventSource eventSource() {
         return EventSource(al_get_keyboard_event_source(), false);
     }
 };

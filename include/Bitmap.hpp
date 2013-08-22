@@ -36,7 +36,7 @@ public:
         Creates a bitmap of the specific size.
         @param size size.
      */
-    Bitmap(const Size<int> &size) : Shared(al_create_bitmap(size.getWidth(), size.getHeight()), al_destroy_bitmap) {
+    Bitmap(const Size<int> &size) : Shared(al_create_bitmap(size.width(), size.height()), al_destroy_bitmap) {
     }
 
     /**
@@ -59,7 +59,7 @@ public:
         @param size size.
      */
     Bitmap(Bitmap &parent, const Point<int> &pt, const Size<int> &size) :
-        Shared(al_create_sub_bitmap(parent.get(), pt.getX(), pt.getY(), size.getWidth(), size.getHeight()), al_destroy_bitmap)
+        Shared(al_create_sub_bitmap(parent.get(), pt.x(), pt.y(), size.width(), size.height()), al_destroy_bitmap)
     {
     }
 
@@ -90,7 +90,7 @@ public:
         Returns the bitmap's flags.
         @return the bitmap's flags.
      */
-    int getFlags() const {
+    int flags() const {
         return al_get_bitmap_flags(get());
     }
 
@@ -98,7 +98,7 @@ public:
         Returns the bitmap's format.
         @return the bitmap's format.
      */
-    int getFormat() const {
+    int format() const {
         return al_get_bitmap_format(get());
     }
 
@@ -106,7 +106,7 @@ public:
         Returns the bitmap's width.
         @return the bitmap's width.
      */
-    int getWidth() const {
+    int width() const {
         return al_get_bitmap_width(get());
     }
 
@@ -114,7 +114,7 @@ public:
         Returns the bitmap's height.
         @return the bitmap's height.
      */
-    int getHeight() const {
+    int height() const {
         return al_get_bitmap_height(get());
     }
 
@@ -122,7 +122,7 @@ public:
         Returns the bitmap's size.
         @return the bitmap's size.
      */
-    Size<int> getSize() const {
+    Size<int> size() const {
         return Size<int>(al_get_bitmap_width(get()), al_get_bitmap_height(get()));
     }
 
@@ -132,7 +132,7 @@ public:
         @param y y coordinate.
         @return the color at the given coordinates.
      */
-    ALLEGRO_COLOR getPixel(int x, int y) const {
+    ALLEGRO_COLOR pixel(int x, int y) const {
         return al_get_pixel(get(), x, y);
     }
 
@@ -141,7 +141,7 @@ public:
         @param pt point.
         @return the color at the given coordinates.
      */
-    template <class T> ALLEGRO_COLOR getPixel(const Point<T> &pt) const {
+    template <class T> ALLEGRO_COLOR pixel(const Point<T> &pt) const {
         return al_get_pixel(get(), pt.x, pt.y);
     }
 
@@ -241,7 +241,7 @@ public:
             Returns the bitmap's locked region.
             @return the bitmap's locked region.
          */
-        ALLEGRO_LOCKED_REGION *getLockedRegion() const {
+        ALLEGRO_LOCKED_REGION *lockedRegion() const {
             return m_region;
         }
 
@@ -394,7 +394,7 @@ public:
     /**
         Returns the target bitmap.
      */
-    static Bitmap getTarget() {
+    static Bitmap target() {
         return Bitmap(al_get_target_bitmap(), false);
     }
 

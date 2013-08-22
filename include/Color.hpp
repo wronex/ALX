@@ -113,7 +113,7 @@ public:
         Returns the red color component.
         @return the red color component.
      */
-    uint8_t getRed() const {
+    uint8_t red() const {
         return m_color.m_red;
     }
 
@@ -121,7 +121,7 @@ public:
         Returns the green color component.
         @return the green color component.
      */
-    uint8_t getGreen() const {
+    uint8_t green() const {
         return m_color.m_green;
     }
 
@@ -129,7 +129,7 @@ public:
         Returns the blue color component.
         @return the blue color component.
      */
-    uint8_t getBlue() const {
+    uint8_t blue() const {
         return m_color.m_blue;
     }
 
@@ -137,7 +137,7 @@ public:
         Returns the alpha color component.
         @return the alpha color component.
      */
-    uint8_t getAlpha() const {
+    uint8_t alpha() const {
         return m_color.m_alpha;
     }
 
@@ -145,7 +145,7 @@ public:
         Returns the red color component as a float.
         @return the red color component as a float.
      */
-    float getRedFloat() const {
+    float redFloat() const {
         return _intToFloat(m_color.m_red);
     }
 
@@ -153,7 +153,7 @@ public:
         Returns the green color component as a float.
         @return the green color component as a float.
      */
-    float getGreenFloat() const {
+    float greenFloat() const {
         return _intToFloat(m_color.m_green);
     }
 
@@ -161,7 +161,7 @@ public:
         Returns the blue color component as a float.
         @return the blue color component as a float.
      */
-    float getBlueFloat() const {
+    float blueFloat() const {
         return _intToFloat(m_color.m_blue);
     }
 
@@ -169,7 +169,7 @@ public:
         Returns the alpha color component as a float.
         @return the alpha color component as a float.
      */
-    float getAlphaFloat() const {
+    float alphaFloat() const {
         return _intToFloat(m_color.m_alpha);
     }
 

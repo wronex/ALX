@@ -27,7 +27,7 @@ public:
         Returns the type of event.
         @return the type of event.
      */
-    int getType() const {
+    int type() const {
         return m_type;
     }
 

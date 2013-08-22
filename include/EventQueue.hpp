@@ -76,7 +76,7 @@ public:
         It automatically unrefs a user event.
         @return the result event.
      */
-    Event getEvent() {
+    Event event() {
         ALLEGRO_EVENT event;
         return al_get_next_event(get(), &event) ? Event(event) : Event();
     }

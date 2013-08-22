@@ -38,7 +38,7 @@ public:
         Returns the timer count.
         @return the timer count.
      */
-    int64_t getCount() const {
+    int64_t count() const {
         return al_get_timer_count(get());
     }
 
@@ -46,7 +46,7 @@ public:
         Returns the timer speed.
         @return the timer speed in seconds.
      */
-    double getSpeed() const {
+    double speed() const {
         return al_get_timer_speed(get());
     }
 
@@ -54,7 +54,7 @@ public:
         Returns the event source of the timer.
         @return the event source of the timer.
      */
-    EventSource getEventSource() const {
+    EventSource eventSource() const {
         return EventSource(al_get_timer_event_source(get()), false);
     }
 
@@ -63,7 +63,7 @@ public:
         @return the event source of the timer.
      */
     operator EventSource () const {
-        return getEventSource();
+        return eventSource();
     }
 
     /**

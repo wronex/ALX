@@ -38,7 +38,7 @@ public:
         Returns the default mixer.
         @return the default mixer.
      */
-    static Mixer getDefault() {
+    static Mixer default() {
         return Mixer(al_get_default_mixer(), false);
     }
 
@@ -46,7 +46,7 @@ public:
         Returns the mixer's .
         @return the mixer's .
      */
-    unsigned int getFrequency() const {
+    unsigned int frequency() const {
         return al_get_mixer_frequency(get());
     }
 
@@ -54,7 +54,7 @@ public:
         Returns the mixer's channel configuration.
         @return the mixer's channel configuration.
      */
-    ALLEGRO_CHANNEL_CONF getChannelConfiguration() const {
+    ALLEGRO_CHANNEL_CONF channelConfiguration() const {
         return al_get_mixer_channels(get());
     }
 
@@ -62,7 +62,7 @@ public:
         Returns the mixer's depth.
         @return the mixer's depth.
      */
-    ALLEGRO_AUDIO_DEPTH getDepth() const {
+    ALLEGRO_AUDIO_DEPTH depth() const {
         return al_get_mixer_depth(get());
     }
 
@@ -70,7 +70,7 @@ public:
         Returns the mixer's .
         @return the mixer's .
      */
-    ALLEGRO_MIXER_QUALITY getQuality() const {
+    ALLEGRO_MIXER_QUALITY quality() const {
         return al_get_mixer_quality(get());
     }
 
@@ -220,7 +220,7 @@ public:
     private:
         //constructor
         PostProcessCallback(const std::shared_ptr<PostProcessCallbackInstance> &instance) : std::shared_ptr<PostProcessCallbackInstance>(instance) {
-        }        
+        }
 
         friend class Mixer;
     };
@@ -232,7 +232,7 @@ public:
      */
     PostProcessCallback setPostProcessCallback(PostProcessCallbackFunctionType &fn) {
         std::shared_ptr<PostProcessCallbackInstance> instance = std::shared_ptr<PostProcessCallbackInstance>(new PostProcessCallbackInstance(*this, fn));
-        return al_set_mixer_postprocess_callback(get(), &PostProcessCallbackInstance::callback, instance.get()) ? instance : nullptr;        
+        return al_set_mixer_postprocess_callback(get(), &PostProcessCallbackInstance::callback, instance.get()) ? instance : nullptr;
     }
 
     /**
@@ -240,7 +240,7 @@ public:
         @param object allegro object.
         @param managed if true, the object will be deleted automatically when its last reference will be deleted.
      */
-    Mixer(ALLEGRO_MIXER *object, bool managed = true) : 
+    Mixer(ALLEGRO_MIXER *object, bool managed = true) :
         Shared(object, managed, al_destroy_mixer)
     {
     }

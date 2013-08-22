@@ -23,14 +23,14 @@ public:
     /**
         Returns the x coordinate.
      */
-    T getX() const {
+    T x() const {
         return m_x;
     }
 
     /**
         Returns the y coordinate.
      */
-    T getY() const {
+    T y() const {
         return m_y;
     }
 
@@ -40,7 +40,7 @@ public:
         @return true if the test is successful.
      */
     template <class U> bool operator == (const U &vec) const {
-        return m_x == vec.getX() && m_y == vec.getY();
+        return m_x == vec.x() && m_y == vec.y();
     }
 
     /**
@@ -58,7 +58,7 @@ public:
         @return true if the test is successful.
      */
     template <class U> bool operator < (const U &vec) const {
-        return m_y < vec.getY() || (m_y == vec.getY() && m_x < vec.getX());
+        return m_y < vec.y() || (m_y == vec.y() && m_x < vec.x());
     }
 
     /**
@@ -67,7 +67,7 @@ public:
         @return true if the test is successful.
      */
     template <class U> bool operator <= (const U &vec) const {
-        return m_y < vec.getY() || (m_y == vec.getY() && m_x <= vec.getX());
+        return m_y < vec.y() || (m_y == vec.y() && m_x <= vec.x());
     }
 
     /**
@@ -76,7 +76,7 @@ public:
         @return true if the test is successful.
      */
     template <class U> bool operator > (const U &vec) const {
-        return m_y > vec.getY() || (m_y == vec.getY() && m_x > vec.getX());
+        return m_y > vec.y() || (m_y == vec.y() && m_x > vec.x());
     }
 
     /**
@@ -85,14 +85,14 @@ public:
         @return true if the test is successful.
      */
     template <class U> bool operator >= (const U &vec) const {
-        return m_y > vec.getY() || (m_y == vec.getY() && m_x >= vec.getX());
+        return m_y > vec.y() || (m_y == vec.y() && m_x >= vec.x());
     }
 
     /**
         Returns x * y.
         @return x * y.
      */
-    T getProduct() const {
+    T product() const {
         return m_x * m_y;
     }
 
@@ -128,8 +128,8 @@ public:
         @return reference to this.
      */
     template <class U> D &operator += (const U &vec) {
-        set(m_x + vec.getX(), m_y + vec.getY());
-        return _getDerived();
+        set(m_x + vec.x(), m_y + vec.y());
+        return _derived();
     }
 
     /**
@@ -139,7 +139,7 @@ public:
         @return a vector which contains the sum of both points.
      */
     template <class U> D operator + (const U &vec) {
-        return D(getX() + vec.getX(), getY() + vec.getY());
+        return D(x() + vec.x(), y() + vec.y());
     }
 
     /**
@@ -148,8 +148,8 @@ public:
         @return reference to this.
      */
     template <class U> D &operator -= (const U &vec) {
-        set(m_x - vec.getX(), m_y - vec.getY());
-        return _getDerived();
+        set(m_x - vec.x(), m_y - vec.y());
+        return _derived();
     }
 
     /**
@@ -159,7 +159,7 @@ public:
         @return a vector which contains the difference of both points.
      */
     template <class U> D operator - (const U &vec) {
-        return D(getX() - vec.getX(), getY() - vec.getY());
+        return D(x() - vec.x(), y() - vec.y());
     }
 
     /**
@@ -168,8 +168,8 @@ public:
         @return reference to this.
      */
     template <class U> D &operator *= (const U &vec) {
-        set(m_x * vec.getX(), m_y * vec.getY());
-        return _getDerived();
+        set(m_x * vec.x(), m_y * vec.y());
+        return _derived();
     }
 
     /**
@@ -179,7 +179,7 @@ public:
         @return a vector which contains the product of both points.
      */
     template <class U> D operator * (const U &vec) {
-        return D(getX() * vec.getX(), getY() * vec.getY());
+        return D(x() * vec.x(), y() * vec.y());
     }
 
     /**
@@ -188,8 +188,8 @@ public:
         @return reference to this.
      */
     template <class U> D &operator /= (const U &vec) {
-        set(m_x / vec.getX(), m_y / vec.getY());
-        return _getDerived();
+        set(m_x / vec.x(), m_y / vec.y());
+        return _derived();
     }
 
     /**
@@ -199,7 +199,7 @@ public:
         @return a vector which contains the quotient of both points.
      */
     template <class U> D operator / (const U &vec) {
-        return D(getX() / vec.getX(), getY() / vec.getY());
+        return D(x() / vec.x(), y() / vec.y());
     }
 
     /**
@@ -208,8 +208,8 @@ public:
         @return reference to this.
      */
     template <class U> D &operator %= (const U &vec) {
-        set(m_x % vec.getX(), m_y % vec.getY());
-        return _getDerived();
+        set(m_x % vec.x(), m_y % vec.y());
+        return _derived();
     }
 
     /**
@@ -219,7 +219,7 @@ public:
         @return a vector which contains the modulo of the division of both points.
      */
     template <class U> D operator % (const U &vec) {
-        return D(getX() % vec.getX(), getY() % vec.getY());
+        return D(x() % vec.x(), y() % vec.y());
     }
 
     /**
@@ -229,7 +229,7 @@ public:
      */
     D &operator += (T val) {
         set(m_x + val, m_y + val);
-        return _getDerived();
+        return _derived();
     }
 
     /**
@@ -248,7 +248,7 @@ public:
      */
     D &operator -= (T val) {
         set(m_x - val, m_y - val);
-        return _getDerived();
+        return _derived();
     }
 
     /**
@@ -267,7 +267,7 @@ public:
      */
     D &operator *= (T val) {
         set(m_x * val, m_y * val);
-        return _getDerived();
+        return _derived();
     }
 
     /**
@@ -286,7 +286,7 @@ public:
      */
     D &operator /= (T val) {
         set(m_x / val, m_y / val);
-        return _getDerived();
+        return _derived();
     }
 
     /**
@@ -305,7 +305,7 @@ public:
      */
     D &operator %= (T val) {
         set(m_x % val, m_y % val);
-        return _getDerived();
+        return _derived();
     }
 
     /**
@@ -339,12 +339,12 @@ private:
     friend class Transform;
 
     //Get derived instance.
-    const D &_getDerived() const {
+    const D &_derived() const {
         return *static_cast<const D *>(this);
     }
 
     //Get derived instance.
-    D &_getDerived() {
+    D &_derived() {
         return *static_cast<D *>(this);
     }
 };

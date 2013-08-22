@@ -19,7 +19,7 @@ public:
         @param id id.
         @return the standard path.
      */
-    static FilePath getStandardPath(int id) {
+    static FilePath standardPath(int id) {
         return al_get_standard_path(id);
     }
 
@@ -27,7 +27,7 @@ public:
         Returns the system config.
         @return the system config.
      */
-    static Config getConfig() {
+    static Config config() {
         return Config(al_get_system_config(), false);
     }
 };

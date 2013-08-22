@@ -41,7 +41,7 @@ public:
         @param button button index.
         @return button index or -1 if the index is invalid.
      */
-    int getButton(int button) const {
+    int button(int button) const {
         return button >= 0 && button < _AL_MAX_JOYSTICK_BUTTONS ? get().button[button] : -1;
     }
 
@@ -51,7 +51,7 @@ public:
         @param axis axis index.
         @return axis value or FLT_MAX if the stick index is invalid.
      */
-    float getAxis(int stick, int axis) const {
+    float axis(int stick, int axis) const {
         return stick >= 0 && stick < _AL_MAX_JOYSTICK_STICKS && axis >= 0 && axis < _AL_MAX_JOYSTICK_AXES ? get().stick[stick].axis[axis] : std::numeric_limits<float>::max();
     }
 

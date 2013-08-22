@@ -31,7 +31,7 @@ public:
         Returns the path of the file entry.
         @return the path of the file entry.
      */
-    String getPath() const {
+    String path() const {
         return al_ustr_new(al_get_fs_entry_name(get()));
     }
 
@@ -39,7 +39,7 @@ public:
         Returns the entry's mode flags.
         @return the mode flags.
      */
-    uint32_t getMode() const {
+    uint32_t mode() const {
         return al_get_fs_entry_mode(get());
     }
 
@@ -48,7 +48,7 @@ public:
         @return true if readable.
      */
     bool isReadable() const {
-        return (getMode() && ALLEGRO_FILEMODE_READ) != 0;
+        return (mode() && ALLEGRO_FILEMODE_READ) != 0;
     }
 
     /**
@@ -56,7 +56,7 @@ public:
         @return true if writable.
      */
     bool isWritable() const {
-        return (getMode() && ALLEGRO_FILEMODE_WRITE) != 0;
+        return (mode() && ALLEGRO_FILEMODE_WRITE) != 0;
     }
 
     /**
@@ -64,7 +64,7 @@ public:
         @return true if executable.
      */
     bool isExecutable() const {
-        return (getMode() && ALLEGRO_FILEMODE_EXECUTE) != 0;
+        return (mode() && ALLEGRO_FILEMODE_EXECUTE) != 0;
     }
 
     /**
@@ -72,7 +72,7 @@ public:
         @return true if visible.
      */
     bool isHidden() const {
-        return (getMode() && ALLEGRO_FILEMODE_HIDDEN) != 0;
+        return (mode() && ALLEGRO_FILEMODE_HIDDEN) != 0;
     }
 
     /**
@@ -80,7 +80,7 @@ public:
         @return true if not a directory.
      */
     bool isFile() const {
-        return (getMode() && ALLEGRO_FILEMODE_ISFILE) != 0;
+        return (mode() && ALLEGRO_FILEMODE_ISFILE) != 0;
     }
 
     /**
@@ -88,14 +88,14 @@ public:
         @return true if a directory.
      */
     bool isDirectory() const {
-        return (getMode() && ALLEGRO_FILEMODE_ISDIR) != 0;
+        return (mode() && ALLEGRO_FILEMODE_ISDIR) != 0;
     }
 
     /**
         Returns the entry's last access time.
         @return the entry's last access time.
      */
-    time_t getAccessTime() const {
+    time_t accessTime() const {
         return al_get_fs_entry_atime(get());
     }
 
@@ -103,7 +103,7 @@ public:
         Returns the entry's creation time.
         @return the entry's creation time.
      */
-    time_t getCreationTime() const {
+    time_t creationTime() const {
         return al_get_fs_entry_ctime(get());
     }
 
@@ -111,7 +111,7 @@ public:
         Returns the entry's last modification time.
         @return the entry's last modification time.
      */
-    time_t getModificationTime() const {
+    time_t modificationTime() const {
         return al_get_fs_entry_mtime(get());
     }
 
@@ -119,7 +119,7 @@ public:
         Returns the size of the file.
         @return the size of the file.
      */
-    off_t getSize() const {
+    off_t size() const {
         return al_get_fs_entry_size(get());
     }
 
@@ -224,7 +224,7 @@ public:
         @return an iterator that points to the file entries end.
      */
     const_iterator end() const {
-        return const_iterator();    
+        return const_iterator();
     }
 
     /**
