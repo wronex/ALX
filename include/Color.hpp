@@ -30,7 +30,7 @@ public:
         @param value 32-bit color value in the form of 0xAARRGGBB.
      */
     Color(uint32_t value = 0) {
-        m_color.m_value = value;
+        m_color.value = value;
     }
 
     /**
@@ -90,7 +90,7 @@ public:
         @return an allegro color instance.
      */
     operator ALLEGRO_COLOR () const {
-        return al_map_rgba(m_color.m_red, m_color.m_green, m_color.m_blue, m_color.m_alpha);
+        return al_map_rgba(m_color.component.red, m_color.component.green, m_color.component.blue, m_color.component.alpha);
     }
 
     /**
@@ -98,7 +98,7 @@ public:
         @return a 32-bit value.
      */
     operator uint32_t () const {
-        return m_color.m_value;
+        return m_color.value;
     }
 
     /**
@@ -106,7 +106,7 @@ public:
         @return a 32-bit lvalue.
      */
     operator uint32_t& () {
-        return m_color.m_value;
+        return m_color.value;
     }
 
     /**
@@ -114,7 +114,7 @@ public:
         @return the red color component.
      */
     uint8_t red() const {
-        return m_color.m_red;
+        return m_color.component.red;
     }
 
     /**
@@ -122,7 +122,7 @@ public:
         @return the green color component.
      */
     uint8_t green() const {
-        return m_color.m_green;
+        return m_color.component.green;
     }
 
     /**
@@ -130,7 +130,7 @@ public:
         @return the blue color component.
      */
     uint8_t blue() const {
-        return m_color.m_blue;
+        return m_color.component.blue;
     }
 
     /**
@@ -138,7 +138,7 @@ public:
         @return the alpha color component.
      */
     uint8_t alpha() const {
-        return m_color.m_alpha;
+        return m_color.component.alpha;
     }
 
     /**
@@ -146,7 +146,7 @@ public:
         @return the red color component as a float.
      */
     float redFloat() const {
-        return _intToFloat(m_color.m_red);
+        return _intToFloat(m_color.component.red);
     }
 
     /**
@@ -154,7 +154,7 @@ public:
         @return the green color component as a float.
      */
     float greenFloat() const {
-        return _intToFloat(m_color.m_green);
+        return _intToFloat(m_color.component.green);
     }
 
     /**
@@ -162,7 +162,7 @@ public:
         @return the blue color component as a float.
      */
     float blueFloat() const {
-        return _intToFloat(m_color.m_blue);
+        return _intToFloat(m_color.component.blue);
     }
 
     /**
@@ -170,7 +170,7 @@ public:
         @return the alpha color component as a float.
      */
     float alphaFloat() const {
-        return _intToFloat(m_color.m_alpha);
+        return _intToFloat(m_color.component.alpha);
     }
 
     /**
@@ -181,10 +181,10 @@ public:
     Color &operator = (const std::initializer_list<int> &components) {
         std::initializer_list<int>::const_iterator it = components.begin();
         switch (components.size()) {
-            case 4: m_color.m_alpha = _int(*(it + 3));
-            case 3: m_color.m_blue  = _int(*(it + 2));
-            case 2: m_color.m_green = _int(*(it + 1));
-            case 1: m_color.m_red   = _int(*it);
+            case 4: m_color.component.alpha = _int(*(it + 3));
+            case 3: m_color.component.blue  = _int(*(it + 2));
+            case 2: m_color.component.green = _int(*(it + 1));
+            case 1: m_color.component.red   = _int(*it);
         }
         return *this;
     }
@@ -197,10 +197,10 @@ public:
     Color &operator = (const std::initializer_list<float> &components) {
         std::initializer_list<float>::const_iterator it = components.begin();
         switch (components.size()) {
-            case 4: m_color.m_alpha = _floatToInt(*(it + 3));
-            case 3: m_color.m_blue  = _floatToInt(*(it + 2));
-            case 2: m_color.m_green = _floatToInt(*(it + 1));
-            case 1: m_color.m_red   = _floatToInt(*it);
+            case 4: m_color.component.alpha = _floatToInt(*(it + 3));
+            case 3: m_color.component.blue  = _floatToInt(*(it + 2));
+            case 2: m_color.component.green = _floatToInt(*(it + 1));
+            case 1: m_color.component.red   = _floatToInt(*it);
         }
         return *this;
     }
@@ -211,7 +211,7 @@ public:
         @return reference to this.
      */
     Color &operator = (const ALLEGRO_COLOR &color) {
-        al_unmap_rgba(color, &m_color.m_red, &m_color.m_green, &m_color.m_blue, &m_color.m_alpha);
+        al_unmap_rgba(color, &m_color.component.red, &m_color.component.green, &m_color.component.blue, &m_color.component.alpha);
         return *this;
     }
 
@@ -220,7 +220,7 @@ public:
         @param c value of component.
      */
     void setRed(uint8_t c) {
-        m_color.m_red = c;
+        m_color.component.red = c;
     }
 
     /**
@@ -228,7 +228,7 @@ public:
         @param c value of component.
      */
     void setGreen(uint8_t c) {
-        m_color.m_green = c;
+        m_color.component.green = c;
     }
 
     /**
@@ -236,7 +236,7 @@ public:
         @param c value of component.
      */
     void setBlue(uint8_t c) {
-        m_color.m_blue = c;
+        m_color.component.blue = c;
     }
 
     /**
@@ -244,7 +244,7 @@ public:
         @param c value of component.
      */
     void setAlpha(uint8_t c) {
-        m_color.m_alpha = c;
+        m_color.component.alpha = c;
     }
 
     /**
@@ -252,7 +252,7 @@ public:
         @param f value of component.
      */
     void setRed(float f) {
-        m_color.m_red = _floatToInt(f);
+        m_color.component.red = _floatToInt(f);
     }
 
     /**
@@ -260,7 +260,7 @@ public:
         @param f value of component.
      */
     void setGreen(float f) {
-        m_color.m_green = _floatToInt(f);
+        m_color.component.green = _floatToInt(f);
     }
 
     /**
@@ -268,7 +268,7 @@ public:
         @param f value of component.
      */
     void setBlue(float f) {
-        m_color.m_blue = _floatToInt(f);
+        m_color.component.blue = _floatToInt(f);
     }
 
     /**
@@ -276,7 +276,7 @@ public:
         @param f value of component.
      */
     void setAlpha(float f) {
-        m_color.m_alpha = _floatToInt(f);
+        m_color.component.alpha = _floatToInt(f);
     }
 
     /**
@@ -287,10 +287,10 @@ public:
         @param alpha initial value of the alpha color component.
      */
     void set(int red, int green, int blue, int alpha = 255) {
-        m_color.m_red   = std::max(0, std::min(red, 255));
-        m_color.m_green = std::max(0, std::min(green, 255));
-        m_color.m_blue  = std::max(0, std::min(blue , 255));
-        m_color.m_alpha = std::max(0, std::min(alpha, 255));
+        m_color.component.red   = std::max(0, std::min(red, 255));
+        m_color.component.green = std::max(0, std::min(green, 255));
+        m_color.component.blue  = std::max(0, std::min(blue , 255));
+        m_color.component.alpha = std::max(0, std::min(alpha, 255));
     }
 
     /**
@@ -301,25 +301,23 @@ public:
         @param alpha initial value of the alpha color component.
      */
     void set(float red, float green, float blue, float alpha = 1.0f) {
-        m_color.m_red   = _floatToInt(red  );
-        m_color.m_green = _floatToInt(green);
-        m_color.m_blue  = _floatToInt(blue );
-        m_color.m_alpha = _floatToInt(alpha);
+        m_color.component.red   = _floatToInt(red  );
+        m_color.component.green = _floatToInt(green);
+        m_color.component.blue  = _floatToInt(blue );
+        m_color.component.alpha = _floatToInt(alpha);
     }
 
 private:
     //color
     union {
         struct {
-            uint8_t m_blue;
-            uint8_t m_green;
-            uint8_t m_red;
-            uint8_t m_alpha;
-        };
-        uint32_t m_value;
-    } m_color;
-
-    //converts float color component to integer
+            uint8_t blue;
+            uint8_t green;
+            uint8_t red;
+            uint8_t alpha;
+        } component;
+        uint32_t value;
+    } m_color;    //converts float color component to integer
     static uint8_t _floatToInt(float f) {
         return 255 * std::max(0.0f, std::min(f, 1.0f));
     }

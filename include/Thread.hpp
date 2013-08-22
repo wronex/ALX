@@ -45,7 +45,7 @@ public:
         returns the stop flag.
         @return the stop flag.
      */
-    bool stop() const {
+    bool shouldStop() const {
         return al_get_thread_should_stop(get());
     }
 
@@ -92,7 +92,7 @@ public:
 
 private:
     //std function runner
-    static void *_run(ALLEGRO_THREAD *thread, void *arg) {
+    static void *_run(ALLEGRO_THREAD* /*thread*/, void *arg) {
         std::shared_ptr<Function> funcPtr(reinterpret_cast<Function *>(arg));
         return funcPtr->operator ()();
     }

@@ -36,7 +36,7 @@ public:
         @param source event source.
         @return reference to this.
      */
-    EventQueue& register(ALLEGRO_EVENT_SOURCE *source) {
+    EventQueue& registerEventSource(ALLEGRO_EVENT_SOURCE *source) {
         al_register_event_source(get(), source);
         return *this;
     }
@@ -46,7 +46,7 @@ public:
         @param source event source.
         @return reference to this.
      */
-    EventQueue& register(const EventSource &source) {
+    EventQueue& registerEventSource(const EventSource &source) {
         al_register_event_source(get(), source.get());
         return *this;
     }

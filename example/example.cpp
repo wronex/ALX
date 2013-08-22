@@ -82,7 +82,12 @@ int main() {
     UserEventSource ues;
 
     //bind the resources to the event queue
-    eventQueue << Keyboard::eventSource() << Mouse::eventSource() << display << timer << ues;
+    eventQueue
+        .register(Keyboard::eventSource())
+        .register(Mouse::eventSource())
+        .register(display)
+        .register(timer)
+        .register(ues);
 
     //bitmaps
     Bitmap paddleBmp("data/paddle.bmp");

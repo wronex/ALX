@@ -690,10 +690,10 @@ public:
         Substring constructor.
         @param str source string.
         @param index start character index.
-        @param len of characters; if -1, the whole string.
+        @param len of characters; if 0, the whole string.
      */
-    String(const String &str, size_t index, size_t len = -1) :
-        Shared(al_ustr_dup_substr(str.get(), al_ustr_offset(str.get(), index), al_ustr_offset(str.get(), len >= 0 ? index + len : INT_MAX)), al_ustr_free)
+    String(const String &str, size_t index, size_t len = 0) :
+        Shared(al_ustr_dup_substr(str.get(), al_ustr_offset(str.get(), index), al_ustr_offset(str.get(), len > 0 ? index + len : INT_MAX)), al_ustr_free)
     {
     }
 
@@ -859,22 +859,6 @@ public:
      */
     const_reverse_iterator crend() {
         return const_reverse_iterator(cbegin());
-    }
-
-    /**
-        returns the string's length.
-        @return the string's length.
-     */
-    size_t size() const {
-        return length();
-    }
-
-    /**
-        returns the string's length.
-        @return the string's length.
-     */
-    size_t length() const {
-        return length();
     }
 
     /**

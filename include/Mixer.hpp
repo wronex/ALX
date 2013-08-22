@@ -38,7 +38,7 @@ public:
         Returns the default mixer.
         @return the default mixer.
      */
-    static Mixer default() {
+    static Mixer defaultMixer() {
         return Mixer(al_get_default_mixer(), false);
     }
 

@@ -2,6 +2,7 @@
 #define ALX_TRANSFORM_HPP
 
 
+#include <stack>
 #include <allegro5/allegro.h>
 #include "Value.hpp"
 #include "Point.hpp"
@@ -19,30 +20,32 @@ public:
     /**
         The default constructor.
      */
-    Transform() {
+    Transform() : Value<ALLEGRO_TRANSFORM>() {
     }
 
     /**
         constructor from transform.
         @param transform transform.
      */
-    Transform(const ALLEGRO_TRANSFORM &transform) {
+    Transform(const ALLEGRO_TRANSFORM &transform) : Value<ALLEGRO_TRANSFORM>() {
         al_copy_transform(&get(), &transform);
-    }
-
-    /**
-        The identity constructor.
-     */
-    Transform(bool) {
-        setIdentity();
     }
 
     /**
         the copy constructor.
         @param src source object.
      */
-    Transform(const Transform &src) {
+    Transform(const Transform &src) : Value<ALLEGRO_TRANSFORM>() {
         al_copy_transform(&get(), &src.get());
+    }
+
+    /**
+        The identity constructor.
+     */
+    static Transform &identity() {
+        auto transform = std::unique_ptr<Transform>(new Transform);
+        transform->setIdentity();
+        return *transform.release();
     }
 
     /**
@@ -160,12 +163,34 @@ public:
         return _currentTransform();
     }
 
+    /**
+     * stores the current transform in a stack.
+     */
+    static void store() {
+        auto state = std::unique_ptr<State>(new State);
+        state->retrieve(ALLEGRO_STATE_TRANSFORM);
+        _storedStates.push(std::move(state));
+    }
+
+    /**
+     * restores the last stored transform that pops it from the stack.
+     */
+    static void restore() {
+        if (!_storedStates.empty()) {
+            auto state = std::move(_storedStates.top());
+            state->restore();
+            _storedStates.pop();
+        }
+    }
+
 private:
     //internal current transform
     static Transform*& _currentTransform() {
         static Transform *t = 0;
         return t;
     }
+
+    static std::stack< std::unique_ptr<State> > _storedStates;
 };
 
 

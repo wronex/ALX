@@ -279,7 +279,7 @@ private:
     al_fixed m_value;
 
     //internal constructor used to avoiding erroneous type conversions
-    Fixed(al_fixed v, bool d) : m_value(v) {
+    Fixed(al_fixed v, bool /*d*/) : m_value(v) {
     }
 
     //make fixed
