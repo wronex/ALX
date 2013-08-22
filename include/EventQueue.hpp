@@ -36,7 +36,7 @@ public:
         @param source event source.
         @return reference to this.
      */
-    EventQueue& operator << (ALLEGRO_EVENT_SOURCE *source) {
+    EventQueue& register(ALLEGRO_EVENT_SOURCE *source) {
         al_register_event_source(get(), source);
         return *this;
     }
@@ -46,7 +46,7 @@ public:
         @param source event source.
         @return reference to this.
      */
-    EventQueue& operator << (const EventSource &source) {
+    EventQueue& register(const EventSource &source) {
         al_register_event_source(get(), source.get());
         return *this;
     }
@@ -56,7 +56,7 @@ public:
         @param source event source.
         @return reference to this.
      */
-    EventQueue& operator >> (ALLEGRO_EVENT_SOURCE *source) {
+    EventQueue& unregister(ALLEGRO_EVENT_SOURCE *source) {
         al_unregister_event_source(get(), source);
         return *this;
     }
@@ -66,7 +66,7 @@ public:
         @param source event source.
         @return reference to this.
      */
-    EventQueue& operator >> (const EventSource &source) {
+    EventQueue& unregister(const EventSource &source) {
         al_unregister_event_source(get(), source.get());
         return *this;
     }
@@ -76,7 +76,7 @@ public:
         It automatically unrefs a user event.
         @return the result event.
      */
-    Event event() {
+    Event nextEvent() {
         ALLEGRO_EVENT event;
         return al_get_next_event(get(), &event) ? Event(event) : Event();
     }
@@ -99,16 +99,6 @@ public:
         ALLEGRO_EVENT event;
         al_wait_for_event(get(), &event);
         return event;
-    }
-
-    /**
-        Waits for an event.
-        @param event event.
-        @return reference to this.
-     */
-    EventQueue& operator >> (Event &event) {
-        al_wait_for_event(get(), &event.get());
-        return *this;
     }
 
     /**
